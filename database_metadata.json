@@ -1,0 +1,378 @@
+{
+  "database_name": "llm",
+  "dialect": "mysql",
+  "tables": [
+    {
+      "name": "Classrooms",
+      "columns": [
+        {
+          "name": "classroom_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": true,
+          "comment": null
+        },
+        {
+          "name": "classroom_name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "capacity",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        }
+      ],
+      "primary_keys": {
+        "constrained_columns": [
+          "classroom_id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [],
+      "unique_constraints": [],
+      "check_constraints": [],
+      "comment": null
+    },
+    {
+      "name": "Courses",
+      "columns": [
+        {
+          "name": "course_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": true,
+          "comment": null
+        },
+        {
+          "name": "course_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "teacher_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        }
+      ],
+      "primary_keys": {
+        "constrained_columns": [
+          "course_id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": "Courses_ibfk_1",
+          "constrained_columns": [
+            "teacher_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "Teachers",
+          "referred_columns": [
+            "teacher_id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "teacher_id",
+          "column_names": [
+            "teacher_id"
+          ],
+          "unique": false
+        }
+      ],
+      "unique_constraints": [],
+      "check_constraints": [],
+      "comment": null
+    },
+    {
+      "name": "Enrollments",
+      "columns": [
+        {
+          "name": "enrollment_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": true,
+          "comment": null
+        },
+        {
+          "name": "student_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "course_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "enrollment_date",
+          "type": "DATETIME",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "comment": null
+        }
+      ],
+      "primary_keys": {
+        "constrained_columns": [
+          "enrollment_id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": "Enrollments_ibfk_1",
+          "constrained_columns": [
+            "student_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "Students",
+          "referred_columns": [
+            "student_id"
+          ],
+          "options": {}
+        },
+        {
+          "name": "Enrollments_ibfk_2",
+          "constrained_columns": [
+            "course_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "Courses",
+          "referred_columns": [
+            "course_id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "course_id",
+          "column_names": [
+            "course_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "student_id",
+          "column_names": [
+            "student_id"
+          ],
+          "unique": false
+        }
+      ],
+      "unique_constraints": [],
+      "check_constraints": [],
+      "comment": null
+    },
+    {
+      "name": "Students",
+      "columns": [
+        {
+          "name": "student_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": true,
+          "comment": null
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "date_of_birth",
+          "type": "DATE",
+          "nullable": true,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        }
+      ],
+      "primary_keys": {
+        "constrained_columns": [
+          "student_id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "email",
+          "column_names": [
+            "email"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ],
+      "unique_constraints": [
+        {
+          "name": "email",
+          "column_names": [
+            "email"
+          ],
+          "duplicates_index": "email"
+        }
+      ],
+      "check_constraints": [],
+      "comment": null
+    },
+    {
+      "name": "Teachers",
+      "columns": [
+        {
+          "name": "teacher_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": true,
+          "comment": null
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "default": "None",
+          "autoincrement": false,
+          "comment": null
+        }
+      ],
+      "primary_keys": {
+        "constrained_columns": [
+          "teacher_id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "email",
+          "column_names": [
+            "email"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ],
+      "unique_constraints": [
+        {
+          "name": "email",
+          "column_names": [
+            "email"
+          ],
+          "duplicates_index": "email"
+        }
+      ],
+      "check_constraints": [],
+      "comment": null
+    }
+  ],
+  "views": [],
+  "schemas": [
+    "SchoolDB",
+    "information_schema",
+    "jobs",
+    "llm",
+    "mysql",
+    "performance_schema",
+    "sys"
+  ],
+  "relationships": [
+    {
+      "from_table": "Courses",
+      "from_columns": [
+        "teacher_id"
+      ],
+      "to_table": "Teachers",
+      "to_columns": [
+        "teacher_id"
+      ],
+      "constraint_name": "Courses_ibfk_1"
+    },
+    {
+      "from_table": "Enrollments",
+      "from_columns": [
+        "student_id"
+      ],
+      "to_table": "Students",
+      "to_columns": [
+        "student_id"
+      ],
+      "constraint_name": "Enrollments_ibfk_1"
+    },
+    {
+      "from_table": "Enrollments",
+      "from_columns": [
+        "course_id"
+      ],
+      "to_table": "Courses",
+      "to_columns": [
+        "course_id"
+      ],
+      "constraint_name": "Enrollments_ibfk_2"
+    }
+  ]
+}

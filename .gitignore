@@ -1,0 +1,58 @@
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+env/
+venv/
+
+# Environment Variables / Secrets
+*.env
+.env.*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# FastAPI / Uvicorn
+*.db
+instance/
+.tmp/
+
+# Coverage
+.coverage
+htmlcov/
+
+# MyPy
+.mypy_cache/
+
+# PyTest cache
+.pytest_cache/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebooks Checkpoints
+.ipynb_checkpoints/
+
+# SQLite local files for testing
+*.sqlite3
+*.sql
+*.db
+
+# Generated files
+*.bak
+*.orig

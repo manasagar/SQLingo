@@ -1,0 +1,34 @@
+[
+  {
+    "id": "q1",
+    "title": "Basic Select",
+    "description": "Retrieve name and salary from Employees table",
+    "sql": "SELECT name, salary FROM Employees;",
+    "category": "select",
+    "tables": ["Employees"]
+  },
+  {
+    "id": "q2",
+    "title": "Filter by Department",
+    "description": "Select all employees working in department 3",
+    "sql": "SELECT * FROM Employees WHERE department_id = 3;",
+    "category": "filter",
+    "tables": ["Employees"]
+  },
+  {
+    "id": "q3",
+    "title": "Join employees with departments",
+    "description": "Displays employee name with their department name",
+    "sql": "SELECT e.name, d.department_name FROM Employees e INNER JOIN Departments d ON e.department_id = d.id;",
+    "category": "join",
+    "tables": ["Employees", "Departments"]
+  },
+  {
+    "id": "q4",
+    "title": "Count employees per department",
+    "description": "Group employees based on their department and count total",
+    "sql": "SELECT department_id, COUNT(*) AS total_employees FROM Employees GROUP BY department_id;",
+    "category": "aggregation",
+    "tables": ["Employees"]
+  }
+]
